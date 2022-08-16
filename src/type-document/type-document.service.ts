@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 
 import { CreateTypeDocumentDto, UpdateTypeDocumentDto } from './dtos';
 import { TypeDocument } from './entities/type-document.entity';
+import { IResponseSelect } from './interfaces/response-select.interface';
 
 @Injectable()
 export class TypeDocumentService {
@@ -21,7 +22,18 @@ export class TypeDocumentService {
         return typeDocuments;
     }
 
-    async findByTypeDocumentId(id: string): Promise<TypeDocument> { 
+    async getSelectTypeDocument(): Promise<IResponseSelect[]> {
+        var typeDocument = await this.typeDocumentRepository.find({
+            where: {
+                isActive: true
+            },
+            select: ['id', 'description']
+        });
+
+        return typeDocument.map(data => { return  {id: data.id, name: data.description }});
+    }
+
+    async getTypeDocumetById(id: string): Promise<TypeDocument> { 
         var typeDocument = await this.typeDocumentRepository.findOne({ 
             where: {
                 id
@@ -46,7 +58,7 @@ export class TypeDocumentService {
 
     async updateTypeDocument(id: string, updateTypeDocumentDto: UpdateTypeDocumentDto): Promise<TypeDocument> {
         try {
-            var typeDocument = this.findByTypeDocumentId(id);
+            var typeDocument = this.getTypeDocumetById(id);
             var editTypeDOcument = Object.assign(typeDocument, updateTypeDocumentDto);
 
             await this.typeDocumentRepository.save(editTypeDOcument);
@@ -60,7 +72,7 @@ export class TypeDocumentService {
 
     async deleteTypeDocument(id: string): Promise<string> {
         try {
-            var typeDocument = await this.findByTypeDocumentId(id);
+            var typeDocument = await this.getTypeDocumetById(id);
             this.typeDocumentRepository.remove(typeDocument);
             return `Deleted ${ typeDocument.description } successfully`;
         } catch (errors) {
