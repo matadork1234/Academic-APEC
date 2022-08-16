@@ -1,0 +1,7 @@
+export enum TTypeLocation {
+    COUNTRY = 'PAIS',
+    DEPARTMENT = 'DEPARTAMENTO',
+    PROVINCE = 'PROVINCIA',
+    LOCALITY = 'LOCALIDAD',
+    MUNICIPALITY = 'MUNICIPIO'
+}
