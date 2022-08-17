@@ -58,8 +58,10 @@ export class TypeDocumentService {
 
     async updateTypeDocument(id: string, updateTypeDocumentDto: UpdateTypeDocumentDto): Promise<TypeDocument> {
         try {
-            var typeDocument = this.getTypeDocumetById(id);
+            var typeDocument = await this.getTypeDocumetById(id);
             var editTypeDOcument = Object.assign(typeDocument, updateTypeDocumentDto);
+
+            console.log(editTypeDOcument)
 
             await this.typeDocumentRepository.save(editTypeDOcument);
 
