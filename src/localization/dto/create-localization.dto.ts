@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { IsDecimal, IsEnum, IsNotEmpty, IsNumber, IsString, Min, MinLength } from 'class-validator';
 import { TTypeLocation } from '../enum/type-location.enum';
 
 export class CreateLocalizationDto {
@@ -10,7 +10,16 @@ export class CreateLocalizationDto {
   @IsEnum(TTypeLocation)
   @IsNotEmpty()
   typeLocation: TTypeLocation;
-  order: number;
-  latitude: number;
-  longitude: number;
+  
+  @IsNumber()
+  @Min(0)
+  order?: number;
+
+  @IsDecimal()
+  @Min(0)
+  latitude?: number;
+
+  @IsDecimal()
+  @Min(0)
+  longitude?: number;
 }
