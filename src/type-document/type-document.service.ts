@@ -58,14 +58,17 @@ export class TypeDocumentService {
 
     async updateTypeDocument(id: string, updateTypeDocumentDto: UpdateTypeDocumentDto): Promise<TypeDocument> {
         try {
-            var typeDocument = await this.getTypeDocumetById(id);
-            var editTypeDOcument = Object.assign(typeDocument, updateTypeDocumentDto);
+            var dataTypeDocument: Partial<TypeDocument>= {
+                id,
+                ...updateTypeDocumentDto
+            }
 
-            console.log(editTypeDOcument)
+            var typeDocument = await this.typeDocumentRepository.preload(dataTypeDocument);
 
-            await this.typeDocumentRepository.save(editTypeDOcument);
-
-            return editTypeDOcument;
+            if (typeDocument)
+                return await this.typeDocumentRepository.save(typeDocument);
+            else
+                throw new NotFoundException(`Type Document not exist`);
 
         } catch (error) {
             this.Logger.error(error);
