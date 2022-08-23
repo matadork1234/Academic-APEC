@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Student } from "./student.entity";
 
-import { Localization } from "src/localization/entities/localization.entity";
+import { Localization } from "../../localization/entities/localization.entity";
 
 @Entity('detail_students')
 export class DetailStudent {

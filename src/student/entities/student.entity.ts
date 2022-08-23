@@ -1,11 +1,11 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-import { User } from 'src/auth/entities/user.entity';
+import { User } from '../../auth/entities/user.entity';
 import { TExpeditionDocument } from '../enum/expedition-document.enum';
 import { TGender } from '../enum/gender.enum';
 import { TNationality } from '../enum/nationality.enum';
 import { DetailStudent } from './detail-student.entity';
-import { TypeDocument } from 'src/type-document/entities/type-document.entity';
+import { TypeDocument } from '../../type-document/entities/type-document.entity';
 
 @Entity('students')
 export class Student {
