@@ -21,7 +21,7 @@ export class DetailStudent {
     @JoinColumn({name: 'student_id', referencedColumnName: 'id'})
     student: Student;
 
-    @ManyToOne(() => Localization, (loc) => loc.detailStudents )
+    @ManyToOne(() => Localization, (loc) => loc.detailStudents, { eager: true } )
     @JoinColumn({ name: 'localization_id', referencedColumnName: 'id'})
     localization: Localization;
     

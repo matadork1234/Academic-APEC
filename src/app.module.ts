@@ -8,6 +8,7 @@ import { TYPEORM_CONFIG } from './common/constant/constant';
 import { StudentModule } from './student/student.module';
 import { TypeDocumentModule } from './type-document/type-document.module';
 import { LocalizationModule } from './localization/localization.module';
+import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { LocalizationModule } from './localization/localization.module';
     StudentModule,
     TypeDocumentModule,
     LocalizationModule,
+    CourseModule,
   ],
   controllers: [],
   providers: [],

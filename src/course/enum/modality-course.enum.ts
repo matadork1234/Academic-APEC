@@ -1,0 +1,5 @@
+export enum TModalityCourse {
+    PRESENTIAL = 'PRESENCIAL',
+    SEMI_PRESENTIAL = 'SEMI PRESENCIAL',
+    VIRTUAL = 'VIRTUAL'
+}

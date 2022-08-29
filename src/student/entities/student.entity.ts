@@ -89,7 +89,7 @@ export class Student {
   @JoinColumn({ name: 'type_document_id', referencedColumnName: 'id' })
   typeDocument: TypeDocument;
 
-  @OneToOne(() => DetailStudent, (dstudent) => dstudent.student)
+  @OneToOne(() => DetailStudent, (dstudent) => dstudent.student, { eager: true })
   detailStudent: DetailStudent;
   
   @OneToOne(() => User, (user) =>user.student)

@@ -9,3 +9,5 @@ export const DATABASE_PASSWORD = 'DATABASE_PASSWORD';
 export const DATABASE_USER = 'DATABASE_USER';
 
 export const JWT_SECRET = 'JWT_SECRET';
+
+export const HOST_API = 'HOST_API'
