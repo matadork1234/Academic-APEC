@@ -1,3 +1,5 @@
 export enum TTypeCourse {
-    
+    PARTICIPATION = 'PARTICIPACION',
+    CALIFICATION = 'CALIFICACION',
+    NONE = 'NINGUNO'
 }
